@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block title %}WNIT - Panel{% endblock %}
+
+{% block logged_user %} 
+{{ current_user }} 
+{% endblock %}
+
+{% block panel_block %} 
+	{{ all_posts.title }}
+
+	<form method="POST">
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+		<span class="text-danger small"> {{field.errors}}</span>
+	</div>
+	{% for field in form %}
+	<label class="control-label col-sm-2">{{ field.label_tag }} </label>
+	<div class="col-sm-10"> {{ field }} </div>
+	<!-- <div class="col-sm-10"> {{ field }}</div> -->
+
+{% endfor %}
+</div>
+{% csrf_token %} 
+	<input type="button" id="post-new" value="Save"/>
+	</form>
+
+{% endblock panel_block %}
+
+{% block info %}
+
+{% endblock info %}
+
+{% block additional_js %}
+{% load static %}
+<script src="{% static 'js\js.js' %}"></script>
+<!-- <script>$("#post-new").on("click", function(e){ -->
+<!-- alert("WOW"); -->
+<!-- });</script> -->
+{% endblock additional_js %}
+
+{% block javascript %}
+
+
+{% endblock %}

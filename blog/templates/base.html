@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+{% load static %}
+	<head>
+		<meta charset="UTF-8">
+ 		<meta name="description" content="JS,HTML,PHP Web Developer Site">
+ 		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+ 		<meta name="author" content="WN">
+ 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 		<title>{% block title %}{% endblock %}</title>
+			<link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static 'styles/modal.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static 'styles/footer-style.css' %}">
+			  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+			<link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script>
+				$(window).on('scroll',function(){
+					if($(window).scrollTop()){
+						$("nav").addClass('black');
+		
+					}
+					else{
+						// $("a#menu-option").css({'color': 'black',
+						// 					   'transition': '.3',
+						// 						'font-size': '333px'});
+						
+						$("nav").removeClass('black');
+					}
+				})
+			</script>
+	</head>
+	<body>
+
+<div id="myModal" class="modal">
+<!--  -->
+  <!-- Modal content -->
+  <!-- <div class="modal-content"> -->
+    <div class="login-page">
+  	  <span class="close">&times;</span>
+  <div class="form">
+
+    <form style="color: black;" method="POST" id="login-form" class="login-form">
+      <!-- <div id="register_form"> -->
+      {% csrf_token %}
+      <input type="text" id="username" name="username" placeholder="username"/>
+      <input type="password" id="password" name="password" placeholder="password"/>
+	  <!-- </div> -->
+      <button id="login_button" type="submit">login</button>
+      <p id="panel_register" class="message">Not registered? <a style="cursor: pointer;">Create an account</a></p>
+    </form>
+  </div>
+</div>
+  <!-- </div> -->
+
+</div> 
+		<div class="wrapper">
+			<nav>
+				<div class="menu-icon">
+					<i class="fa fa-bars fa-2x"></i>
+				</div>
+				<div class="logo" style="cursor: pointer;" onclick="mainsite()"> {% block logged_user %}{% endblock %}</div>
+				<ul>
+					<li><a id="menu-option" href="{% url "blog:contact_blog"  %}" onclick="gopageno(1)">Contact</a></li>
+					<li><a id="menu-option" href="{% url "blog:personal_blog" %}">Personal</a></li>
+					<li><a id="menu-option" href="{% url "blog:admin_panel"   %}">Admin</a></li>
+
+					{% if user.is_authenticated %}
+					<li><a id="button_logout" class="active"> Logout</a></li>
+					{% else %} 
+					<li><a id="logon" class="active" onclick="getmodal()"> Login</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+	
+			<section class="sec1">
+				<slider>
+					<slide><p>DEMO SLIDESHOW</p></slide>
+					<slide><p>DEMO SLIDESHOW</p></slide>
+					<slide><p>DEMO SLIDESHOW</p></slide>
+					<slide><p>DEMO SLIDESHOW</p></slide>
+				</slider>
+
+			</section>
+			<section id="content" class="content">
+				<section class="main" id="main_content">
+					<section class="skills">
+						 <style>.skills{margin:4.66667em 0 5.55556em;overflow:hidden}@media (max-width:767px){.skills{margin:3em 0 3.83333em}}.skills-items{margin:0 -em(15)}@media (max-width:767px){.skills-item:last-child{margin-bottom:0}.skills-item:last-child .skills-item-inside{border-bottom:0;padding-bottom:0}}@media (max-width:991px){.skills-item{padding:0 .83333em;margin-bottom:1.11111em}}@media (min-width:992px){.skills-item{padding:0 1.55556em;margin-bottom:1.33333em}}@media (min-width:768px){.skills-item{float:left;width:50%}.skills-item:nth-child(2n+1){clear:left}.skills-item:nth-last-child(-n+2){margin-bottom:0}.skills-item:nth-last-child(-n+2) .skills-item-inside{border-bottom:0;padding-bottom:0}}.skills-item-inside{border-bottom:1px solid #ddd}@media (max-width:767px){.skills-item-inside{padding:0 0 .83333em}}@media (min-width:768px){.skills-item-inside{padding:0 1.66667em .94444em}}.skills-title{font-size:1.94444em;text-transform:uppercase;color:#2f2f2f;margin-bottom:6px}@media (max-width:767px){.skills-title{font-size:1.83333em}}.skills-desc{font-size:1em;color:#2f2f2f}
+/*# sourceMappingURL=skills.css.map */
+</style>
+						<div class="container-fluid">
+							{% if contact_block != "" %}
+								{% block contact_block %} {% endblock %}
+							{% endif %}
+							{% if blog_block != "" %}
+								{% block blog_block %} {% endblock %}
+							{% endif %}
+							{% if panel_block != "" %}
+							{% block panel_block %} {% endblock %}
+							{% endif %}
+							
+					
+						</div>
+						<div class="container-fluid">
+							
+
+								{% block landing_page_services %} {% endblock %}
+						</div>
+			{% block separator %} {% endblock %}			
+			{% block landing_page_services_next %} {% endblock %}
+			<section class="line-between-sections"></section>				
+				<div id="idkwhat" class="s-title text-center-xs">Technologies used:</div>
+			{% load static %}
+		<div id="big-image"><a href="{% static 'images/gallery/1.png' %}" target="_blank"><img src="{% static 'images/gallery/1.png' %}" alt="1"></a></div>
+		<div id="small-images">
+			<div class="small-image">
+				<a href="{% static 'images/gallery/1.jpg' %}" target="_blank"><img src="{% static 'images/gallery/1.jpg' %}" alt="JavaScript Angular Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/2.jpg' %}" target="_blank"><img src="{% static 'images/gallery/2.jpg' %}" alt="PHP Laravel Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/3.jpg' %}" target="_blank"><img src="{% static 'images/gallery/3.jpg' %}" alt="PHP Symphony Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/4.jpg' %}" target="_blank"><img src="{% static 'images/gallery/4.jpg' %}" alt="PHP YII Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/5.jpg' %}" target="_blank"><img src="{% static 'images/gallery/5.jpg' %}" alt="JavaScript Aurelia Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/6.jpg' %}" target="_blank"><img src="{% static 'images/gallery/6.jpg' %}" alt="JavaScript Backbone Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/7.jpg' %}" target="_blank"><img src="{% static 'images/gallery/7.jpg' %}" alt="Javascript Dojo Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/8.jpg' %}" target="_blank"><img src="{% static 'images/gallery/8.jpg' %}" alt="PHP Symphony Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/9.jpg' %}" target="_blank"><img src="{% static 'images/gallery/9.jpg' %}" alt="PHP Symphony Framework"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/10.jpg' %}" target="_blank"><img src="{% static 'images/gallery/10.jpg' %}" alt="10"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/11.jpg' %}" target="_blank"><img src="{% static 'images/gallery/11.jpg' %}" alt="11"></a>
+			</div>
+			<div class="small-image">
+				<a href="{% static 'images/gallery/12.jpg' %}" target="_blank"><img src="{% static 'images/gallery/12.jpg' %}" alt="12"></a>
+			</div>
+		</div>
+			</section>
+		</div>
+<!-- 	<section class="sec2">
+		<div class="contactme">Contact me:</div>
+		<div class="formcontact"></div>
+	</section> -->
+	<script>
+	function mainsite(){
+		location.reload();
+	}
+	</script>
+		<script>
+			//menu toogle button
+			$(document).ready(function(){
+				$(".menu-icon").on("click", function(){
+					$("nav ul").toggleClass("showing");
+				});
+			});
+		</script>
+		<script>
+		function gopageno(id){
+		$("#content").removeClass('contentanim');
+		var pageurl = "page" + id +".php";
+		$.ajax({
+			url: pageurl,
+			type: "POST",
+			success: function(data1){
+	
+				$("#content").toggleClass('contentanim');
+				$("#content").html(data1);
+			}
+		});
+		}
+		</script>
+	<script>
+		$('nav ul li').removeClass('active');
+		$('li#menu-gallery').addClass('active');
+		
+		$('div#big-image').html($('div#small-images div.small-image:first-of-type a').clone());
+		$('div#small-images div.small-image a').click(function(e) {
+			e.preventDefault();
+			$('div#big-image').html($(this).clone());
+		});
+	</script>
+
+	<script>
+// Get the modal
+function getmodal(){
+var modal = document.getElementById('myModal');
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+
+    modal.style.display = "block";
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    	    // modal.style.animationDuration = ".3s";
+        // modal.style.animationName = "anim_modalclose";
+        $('#myModal').addClass('modalclose');
+    	setTimeout(function() {
+        $('#myModal').removeClass('modalclose');
+        $(modal).css('display', 'none');
+    }, 300);
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+    	$('#myModal').addClass('modalclose');
+    	setTimeout(function() {
+    	$('#myModal').removeClass('modalclose');
+        $(modal).css('display', 'none');
+    }, 300);
+
+    }
+}
+}
+</script>
+
+<!-- Registration JS - BLOCK -->
+
+
+{% block additional_js %}
+{% endblock additional_js %}
+
+
+
+<!-- ajax login  -->
+{% block javascript %}
+{% endblock %}
+<script>
+	// do not reload after submnit form
+	$("#login-form").submit(function() { return false; }); 
+	</script>
+
+
+	</body>
+	<footer>
+		<main>
+<!-- content -->
+  </main>
+<!--Some of this HTML is directly from Pavilion.  You can change it to whatever you want if you want to mimic this design.-->
+<footer class="flex-rw">
+  
+  <ul class="footer-list-top">
+    <li>
+      <h4 class="footer-list-header">Usefull links for CSS:</h4></li>
+    <li><a href='https://www.w3schools.com/css/' class="generic-anchor footer-list-anchor" itemprop="significantLink">W3 - CSS</a></li>
+    <li><a href='http://www.kurshtml.edu.pl/css/index.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">CSS Tutorial in Polish</a></li>
+    <li><a href='http://how2html.pl/css-podstawy/' class="generic-anchor footer-list-anchor" itemprop="significantLink">CSS3 TUTORIAL IN POLISH</a></li>
+
+    <li><a href='http://how2html.pl/formatowanie-tekstu-css/' itemprop="significantLink" class="generic-anchor footer-list-anchor">TEXT FORMATTING IN CSS</a></li>
+
+    <li><a href='https://www.codecademy.com/learn/learn-css' class="generic-anchor footer-list-anchor" itemprop="significantLink">CODE ACADEMY - FREE ELEARNING PLATFORM</a></li>
+  </ul>
+  <ul class="footer-list-top">
+    <li>
+      <h4 class="footer-list-header">Usefull links for JavaScript:</h4></li>
+
+
+    <li><a href='https://www.javascript.com/' class="generic-anchor footer-list-anchor">JAVASCRIPT - OFFICIAL DOCUMENTATION</a></li>
+    <li><a href='https://developer.mozilla.org/pl/docs/Web/JavaScript' class="generic-anchor footer-list-anchor">JAVASCRIPT TUTORIAL IN ENGLISH</a></li>
+    <li><a href='https://www.codecademy.com/learn/introduction-to-javascript' class="generic-anchor footer-list-anchor">CODEACADEMY - FREE ELEARNING PLATFORM</a></li>
+    <li><a href='http://miroslawzelent.pl/kurs-javascript/' class="generic-anchor footer-list-anchor">POLISH JAVASCRIPT LEARNING PLATFORM FOR BEGINEERS</a></li>
+    <li><a href='https://getbootstrap.com/docs/4.0/getting-started/javascript/' class="generic-anchor footer-list-anchor" target="_blank">BOOTSTRAP - FREE FRAMEWORK FOR JS</a></li>
+  </ul>
+  <ul class="footer-list-top">
+    <li id='help'>
+      <h4 class="footer-list-header">Usefull links for PHP:</h4></li>
+    <li><a href='https://www.codecademy.com/en/tracks/php' class="generic-anchor footer-list-anchor" itemprop="significantLink">PHP TUTORIAL IN ENG</a></li>
+    <li><a href='https://www.codecademy.com/courses/web-beginner-en-StaFQ/0/1?curriculum_id=5124ef4c78d510dd89003eb8' class="generic-anchor footer-list-anchor" itemprop="significantLink">PHP ON ELEARNING PLATFORM</a></li>
+    <li id='find-a-store'><a href='https://www.coursera.org/courses?languages=en&query=php' class="generic-anchor footer-list-anchor" itemprop="significantLink">PHP FRAMEWORK RANKING</a></li>
+    <li id='user-registration'><a href='https://pl.wikibooks.org/wiki/PHP' class="generic-anchor footer-list-anchor" itemprop="significantLink">PHP POLISH TUTORIAL</a></li>
+    <li id='order-tracking'><a href='https://helion.pl/kategorie/webmasterstwo/php' itemprop="significantLink" class="generic-anchor footer-list-anchor">PHP HELION TECHNICAL BOOKS</a></li>
+  </ul>
+  <section class="footer-social-section flex-rw">
+      
+      <span class="footer-social-overlap footer-social-icons-wrapper">
+      <a href="#" class="generic-anchor" target="_blank" title="Pinterest" itemprop="significantLink"><i class="fa fa-pinterest"></i></a>
+      <a href="#" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>
+      <a href="#" class="generic-anchor" target="_blank" title="Twitter" itemprop="significantLink"><i class="fa fa-twitter"></i></a>
+      <a href="#" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+      <a href="#" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+      <a href="#" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+      </span>
+  </section>
+  <section class="footer-bottom-section flex-rw">
+<div class="footer-bottom-wrapper">   
+<i class="fa fa-copyright" role="copyright">
+ 
+</i> {% now "F Y" %} Wojciech Nowak <address class="footer-address" role="company address"><!-- address --></address><span class="footer-bottom-rights"> - All Rights Reserved </span>
+    </div>
+    <div class="footer-bottom-wrapper">
+    	WN(Zyhu)
+
+
+      </div>
+  </section>
+</footer>
+	</footer>
+	</html>

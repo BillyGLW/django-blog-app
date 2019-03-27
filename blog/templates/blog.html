@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+
+{% block title %}WNIT - Personal blog{% endblock %}
+
+{% block logged_user %} 
+{{ current_user }} 
+{% endblock %}
+
+{% block blog_block %} 
+	{{ all_posts.title }}
+	<div class="wrapper">
+
+<table class="productTable" border="0" width="100%">
+<thead>
+ <tr>
+
+                        <td>ID</td>
+                        <td>Title</td>
+                        <td>Content</td>
+                        <td>Date</td>
+                </tr>
+  </thead>
+<tbody>
+
+	{% for post in all_posts%}
+
+
+
+  <tr>
+                        <td class="productName">{{post.id}} </td>
+                        <td >{{post.title}}</td>
+                        <td>{{post.content}}</td>
+                        <td>{{post.created_date}}</td>
+                </tr>
+	<th> {{ post.id }} </th>
+	<td>{{ post.content }} </td>
+	{%endfor%}
+	  </tbody>
+  
+</table>
+  </div>
+{% endblock blog_block %}
+
+{% block info %}
+
+{% endblock info %}
+
+{% block additional_js %}
+<style>
+table.productTable {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+  border-collapse: collapse;
+}
+
+table.productTable thead tr td{
+  font-weight:bold;
+  background:#33ACE2;
+  color:#fff;
+  font-size:16px;
+}
+
+table.productTable td{
+  padding:14px 28px;
+}
+
+table.productTable td a{
+  font-weight:bold;
+  text-decoration:none;
+  color:#5fbde9;
+}
+
+table.productTable tr:nth-child(even) {
+    background-color: #efefef;
+}
+
+table.productTable td a:hover:after{
+/*   content:' →'; */
+}
+
+td.productName{
+  font-weight:bold;
+  font-size:14px;
+  
+}
+
+
+
+@media screen and (max-width: 580px) {
+  .table {
+    display: block;
+  }
+}
+</style>
+{% load static %}
+<script src="{% static 'js\js.js' %}"></script>
+{% endblock additional_js %}
+
+{% block javascript %}
+{% endblock %}
