@@ -4,6 +4,7 @@ from django.contrib import admin
 from blog.views import *
 
 urlpatterns = [
+    url('api/postings/', include('api.urls')),
     url('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
     url(r'blog/login/$', login_user, name="login_user"),

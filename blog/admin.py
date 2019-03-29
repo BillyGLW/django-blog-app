@@ -4,8 +4,10 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from blog.models import MyUser
+from blog.models import MyUser, BlogPost
 
+
+admin.site.register(BlogPost)
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
