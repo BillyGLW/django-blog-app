@@ -112,7 +112,6 @@ function switch_to_register(){
 }
 	
 function create_account_handler(){
-	alert("GOWno");
 		loginurl = '/blog/account/create/';
 		var formdata = $("#login-form").serialize();
 		login = jQuery('input[name="username"]').val();
@@ -142,7 +141,6 @@ function blog_newpost(){
 			type: "POST",
 			data: formdata,
 			success: function(data){
-			alert(data);
 			}
 		});
 }
